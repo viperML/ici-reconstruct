@@ -12,7 +12,7 @@
 
 \tableofcontents
 
-\section{Abstracto}
+\section{Introducción}
 
 En este trabajo se estudia la reconstrucción de datos de temperatura recogidos
 por dos estaciones. Las estaciones en cuestión son las localizadas en Río San
@@ -29,3 +29,25 @@ proceso para el análisis de la otra estación es trivial una vez ya se ha
 realizado uno, queda el notebook de ECR en el repositorio.
 
 \include{render.tex}
+
+\section{Discusión}
+
+El modelo ARIMA parece suficientemente capaz de reconstruir las series
+temporales. Visualmente las secciones se acercan a las medidas reales,
+especialmente para las secciones más cortas, y los errores sen encuentran en
+torno a los dos grados de temperatura. Cabría esperar que teniendo un
+mayor histórico de temperatura, la reconstrucción sea mas precisa.
+
+Entre las otras opciones que se barajaron para la realización de esta tarea, se
+encuentran:
+
+\begin{itemize}
+    \item \textit{Singular Spectrum Analysis} (SSA)
+    \item Redes neuronales LSTM
+\end{itemize}
+
+Dada la facilidad de uso de esta libería para modelos ARIMA, resulta la opción
+más eficiente en cuanto a resultados para el coste de desarrollo.
+
+También queda como desarrollo futuro implementar el mismo código en R, usando la
+libería original ya mencionada.
