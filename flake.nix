@@ -18,6 +18,7 @@
             tectonic
             pandoc
             just
+            julia-bin
           ];
         };
       };
