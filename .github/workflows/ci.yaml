@@ -1,0 +1,35 @@
+name: "CI"
+
+concurrency: ci
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install nix
+      uses: cachix/install-nix-action@master
+      with:
+        install_url: https://nixos.org/nix/install
+        extra_nix_config: |
+          allow-import-from-derivation = false
+          experimental-features = nix-command flakes
+
+    - uses: actions/checkout@v3
+      name: Checkout
+
+    - run: nix develop .#render --command "bash" -c "just ci"
+
+    - uses: ncipollo/release-action@v1
+      name: Release
+      with:
+        omitBody: true
+        omitName: true
+        allowUpdates: true
+        artifacts: build/default/default.pdf

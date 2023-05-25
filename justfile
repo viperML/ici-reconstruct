@@ -9,3 +9,7 @@ watch:
 
 build:
   tectonic -X build
+
+ci:
+  just render
+  just build

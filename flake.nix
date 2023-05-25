@@ -13,11 +13,16 @@
       systems = ["x86_64-linux" "aarch64-linux"];
 
       perSystem = {pkgs, ...}: {
-        devShells.default = with pkgs; mkShellNoCC {
+        devShells.render = with pkgs; mkShellNoCC {
           packages = [
             tectonic
             pandoc
             just
+          ];
+        };
+
+        devShells.code = with pkgs; mkShellNoCC {
+          packages = [
             julia-bin
           ];
         };
