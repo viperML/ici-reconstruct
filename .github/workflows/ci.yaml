@@ -2,6 +2,9 @@ name: "CI"
 
 concurrency: ci
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
